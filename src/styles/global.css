@@ -2973,6 +2973,19 @@ body.has-banner .nav-main.open {
   margin-top: 0.75rem;
   line-height: 1.5;
 }
+.stat-source {
+  color: var(--accent);
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+.stat-footnote {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+}
 @media (max-width: 768px) {
   .home-stats { grid-template-columns: 1fr; gap: 2.5rem; }
   .home-stat-number { font-size: 2.8rem; }
