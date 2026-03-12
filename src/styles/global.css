@@ -2651,6 +2651,23 @@ body.has-banner .nav-main.open {
   color: var(--accent-light);
 }
 
+.news-item-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s;
+}
+.news-item-pdf:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
 .news-empty {
   color: var(--mid-gray);
   font-size: 0.95rem;

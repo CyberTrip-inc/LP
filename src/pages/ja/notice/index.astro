@@ -44,12 +44,14 @@ const noticeItems = allNews
             const badge = item.data.badge;
             const linkHref = item.data.link ? `/ja${item.data.link}` : undefined;
             const linkText = item.data.link_text;
+            const pdfHref = `/notices/${item.id}.pdf`;
             return (
               <div class="news-item">
                 <div class="news-item-date">{item.data.date}</div>
                 <div class="news-item-content">
                   {badge && <span class="news-item-badge news-item-badge--notice">{badge}</span>}
                   <span class="news-item-title">{title}</span>
+                  <a href={pdfHref} class="news-item-link news-item-pdf" target="_blank" rel="noopener">PDF &darr;</a>
                   {linkHref && linkText && (
                     <a href={linkHref} class="news-item-link">{linkText} &rarr;</a>
                   )}

@@ -7,11 +7,15 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "generate:pdf": "node scripts/generate-pdfs.mjs",
+    "build": "node scripts/generate-pdfs.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^6.0.3"
+  },
+  "devDependencies": {
+    "md-to-pdf": "^5.2.5"
   }
 }
