@@ -7,10 +7,10 @@ const { lang } = Astro.props;
 const isEn = lang === 'en';
 
 const images = [
-  { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75', alt: isEn ? 'Mountains' : '山の風景' },
-  { src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75', alt: isEn ? 'Human connection' : '人々の繋がり' },
-  { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=75', alt: isEn ? 'A face' : '人の表情' },
-  { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=75', alt: isEn ? 'Forest light' : '森の木漏れ日' },
+  { src: '/images/philosophy-1.webp', alt: isEn ? 'Friends on a mountain at sunset' : '夕日の山頂で肩を組む仲間' },
+  { src: '/images/philosophy-2.webp', alt: isEn ? 'Travelers sharing a moment' : '旅先で語り合うトラベラー' },
+  { src: '/images/philosophy-3.webp', alt: isEn ? 'Encounter at the summit' : '山頂での出会い' },
+  { src: '/images/philosophy-4.webp', alt: isEn ? 'Two pairs of feet at the edge' : '崖の先に並ぶ二人の足' },
 ];
 ---
 
