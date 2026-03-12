@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const base = isEn ? '/en' : '/ja';
+
+// Get the latest pinned news item, or the most recent one
+const allNews = await getCollection('news');
+const sorted = allNews.sort((a, b) => b.data.date.localeCompare(a.data.date));
+const item = sorted.find(n => n.data.pinned) || sorted[0];
+
+if (!item) return;
+
+const title = isEn ? (item.data.title_en || item.data.title) : item.data.title;
+const badge = isEn ? (item.data.badge_en || item.data.badge) : item.data.badge;
+const linkText = isEn ? (item.data.link_text_en || item.data.link_text) : item.data.link_text;
+const linkHref = item.data.link ? `${base}${item.data.link}` : undefined;
+---
+
+{item && (
+  <div class="announce-banner" id="announce-banner">
+    <div class="announce-banner-inner">
+      {badge && <span class="announce-banner-badge">{badge}</span>}
+      <span class="announce-banner-text">{title}</span>
+      {linkHref && linkText && (
+        <a href={linkHref} class="announce-banner-link">
+          {linkText} &rarr;
+        </a>
+      )}
+    </div>
+    <button class="announce-banner-close" aria-label="Close" id="announce-banner-close">&times;</button>
+  </div>
+)}
+
+<script is:inline>
+(function() {
+  var btn = document.getElementById('announce-banner-close');
+  var banner = document.getElementById('announce-banner');
+  if (btn && banner) {
+    if (sessionStorage.getItem('banner-closed')) {
+      banner.style.display = 'none';
+      document.body.classList.remove('has-banner');
+    }
+    btn.addEventListener('click', function() {
+      banner.style.display = 'none';
+      document.body.classList.remove('has-banner');
+      sessionStorage.setItem('banner-closed', '1');
+    });
+  }
+})();
+</script>

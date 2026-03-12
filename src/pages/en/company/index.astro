@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
+import AnnounceBanner from '../../../components/AnnounceBanner.astro';
 import Footer from '../../../components/Footer.astro';
 
 const lang = 'en';
@@ -35,11 +36,13 @@ const founders = [
     name: 'Kazuya Kumakura',
     nameEn: '熊倉 一哉',
     role: 'Co-Founder / CEO',
+    bio: 'Former engineer at an ad-tech company. Founded CyberTrip to redesign the structure of human encounters, inspired by a serendipitous meeting during travel that changed his life. Leads product strategy and business development.',
   },
   {
     name: 'Yusei Uehara',
     nameEn: '上原 裕生',
     role: 'Co-Founder / CTO',
+    bio: 'Former engineer at an ad-tech company. Founded CyberTrip to redesign the structure of human encounters, inspired by a serendipitous meeting during travel that changed his life. Leads overall development.',
   },
 ];
 ---
@@ -50,6 +53,7 @@ const founders = [
   lang={lang}
   page="company"
 >
+  <AnnounceBanner lang={lang} />
   <Header lang={lang} page="company" />
 
   <section class="page-hero page-hero--company">
@@ -89,12 +93,15 @@ const founders = [
       <div class="founders-grid">
         {founders.map((f) => (
           <div class="founder-card">
-            <div class="founder-avatar">{f.name.charAt(0)}</div>
-            <div class="founder-info">
-              <div class="founder-name">{f.name}</div>
-              <div class="founder-name-en">{f.nameEn}</div>
-              <div class="founder-role">{f.role}</div>
+            <div class="founder-card-header">
+              <div class="founder-avatar">{f.name.charAt(0)}</div>
+              <div class="founder-info">
+                <div class="founder-name">{f.name}</div>
+                <div class="founder-name-en">{f.nameEn}</div>
+                <div class="founder-role">{f.role}</div>
+              </div>
             </div>
+            <p class="founder-bio">{f.bio}</p>
           </div>
         ))}
       </div>

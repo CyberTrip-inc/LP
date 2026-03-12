@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
+import AnnounceBanner from '../../../components/AnnounceBanner.astro';
 import Philosophy from '../../../components/Philosophy.astro';
 import ImageRow from '../../../components/ImageRow.astro';
 import Concept from '../../../components/Concept.astro';
@@ -16,6 +17,7 @@ const lang = 'ja';
   lang={lang}
   page="philosophy"
 >
+  <AnnounceBanner lang={lang} />
   <Header lang={lang} page="philosophy" />
   <div class="page-hero page-hero--philosophy">
     <div class="page-hero-inner">

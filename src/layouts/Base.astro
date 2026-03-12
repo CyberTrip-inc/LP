@@ -24,7 +24,7 @@ const basePath = isEn ? '/en' : '/ja';
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
-<body class:list={[{ en: isEn }]} data-page={page}>
+<body class:list={[{ en: isEn }, 'has-banner']} data-page={page}>
   <slot />
 
   <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>

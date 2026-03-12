@@ -25,6 +25,13 @@ const base = isEn ? '/en' : '/ja';
     <a href={`${base}/company/`} class:list={['nav-link', { active: page === 'company' }]}>
       Company
     </a>
+    <a href={`${base}/news/`} class:list={['nav-link', { active: page === 'news' }]}>
+      News
+    </a>
+    <div class="nav-lang-mobile">
+      <a href="/ja/" class:list={[{ active: !isEn }]}>JP</a>
+      <a href="/en/" class:list={[{ active: isEn }]}>EN</a>
+    </div>
   </nav>
 
   <div class="header-right">

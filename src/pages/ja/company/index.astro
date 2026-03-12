@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
+import AnnounceBanner from '../../../components/AnnounceBanner.astro';
 import Footer from '../../../components/Footer.astro';
 
 const lang = 'ja';
@@ -35,11 +36,13 @@ const founders = [
     name: '熊倉 一哉',
     nameEn: 'Kazuya Kumakura',
     role: 'Co-Founder / CEO',
+    bio: 'アドテクノロジー企業でエンジニアを経験。旅先での偶然の出会いが人生を変えた経験から、「出会いの構造」を再設計するためにCyberTripを創業。プロダクト戦略・事業開発を統括。',
   },
   {
     name: '上原 裕生',
     nameEn: 'Yusei Uehara',
     role: 'Co-Founder / CTO',
+    bio: 'アドテクノロジー企業でエンジニアを経験。旅先での偶然の出会いが人生を変えた経験から、「出会いの構造」を再設計するためにCyberTripを創業。開発全般を統括。',
   },
 ];
 ---
@@ -50,6 +53,7 @@ const founders = [
   lang={lang}
   page="company"
 >
+  <AnnounceBanner lang={lang} />
   <Header lang={lang} page="company" />
 
   <!-- Company Hero -->
@@ -92,12 +96,15 @@ const founders = [
       <div class="founders-grid">
         {founders.map((f) => (
           <div class="founder-card">
-            <div class="founder-avatar">{f.name.charAt(0)}</div>
-            <div class="founder-info">
-              <div class="founder-name">{f.name}</div>
-              <div class="founder-name-en">{f.nameEn}</div>
-              <div class="founder-role">{f.role}</div>
+            <div class="founder-card-header">
+              <div class="founder-avatar">{f.name.charAt(0)}</div>
+              <div class="founder-info">
+                <div class="founder-name">{f.name}</div>
+                <div class="founder-name-en">{f.nameEn}</div>
+                <div class="founder-role">{f.role}</div>
+              </div>
             </div>
+            <p class="founder-bio">{f.bio}</p>
           </div>
         ))}
       </div>
