@@ -1,0 +1,117 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Drift from '../../../components/Drift.astro';
+import WhyTravel from '../../../components/WhyTravel.astro';
+import Footer from '../../../components/Footer.astro';
+
+const lang = 'en';
+---
+
+<Base
+  title="Drift — CyberTrip"
+  description="The travel app where unplanned encounters become lasting connections. Drift designs serendipity."
+  lang={lang}
+  page="drift"
+>
+  <Header lang={lang} page="drift" />
+
+  <!-- Drift Hero -->
+  <section class="drift-hero">
+    <div class="drift-hero-aurora">
+      <div class="drift-hero-blob drift-hero-blob--1"></div>
+      <div class="drift-hero-blob drift-hero-blob--2"></div>
+    </div>
+    <div class="drift-hero-inner">
+      <p class="page-hero-label">Product</p>
+      <h1 class="drift-hero-name">DRIFT</h1>
+      <p class="drift-hero-tagline">Meet people like<br />the ocean finds the shore.</p>
+      <p class="drift-hero-desc">
+        The best encounters aren't planned — they emerge.<br />
+        Drift is a travel app that designs serendipity.<br />
+        Where currents of travel carry people together, naturally.
+      </p>
+    </div>
+  </section>
+
+  <!-- Concept -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div class="section-label-line">
+        <span class="section-label">Concept</span>
+      </div>
+      <div class="drift-concept">
+        <div class="drift-concept-main">
+          <h2 class="drift-concept-heading fade-up">
+            Unplanned encounters<br />change lives.
+          </h2>
+          <p class="drift-concept-body fade-up">
+            Drift — to move without a fixed course. Not matching algorithms, not curated profiles. The conversation that happens by chance at a hostel. The stranger heading to the same place. The moments that stay with you long after the trip ends.
+          </p>
+          <p class="drift-concept-body fade-up">
+            Drift doesn't chase volume.<br />
+            It measures whether encounters actually mattered — and accumulates them. From pre-trip connections to real-time proximity, to relationships that outlast the journey. Every phase, every chance, verified.
+          </p>
+        </div>
+        <div class="drift-concept-side">
+          <div class="drift-concept-quote fade-up">
+            <span class="drift-concept-quote-mark">"</span>
+            <p>You don't search for people.<br />You follow what you want to do —<br />and people are there.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section--darker">
+    <div class="section-inner">
+      <div class="section-label-line">
+        <span class="section-label">How It Works</span>
+      </div>
+      <div class="drift-flow">
+        <div class="drift-flow-step fade-up">
+          <div class="drift-flow-number drift-flow-number--accent">01</div>
+          <h3 class="drift-flow-title">Register a trip</h3>
+          <p class="drift-flow-body">Enter your dates and destination. Solo or group. Drift automatically finds people heading the same way at the same time.</p>
+        </div>
+        <div class="drift-flow-step fade-up">
+          <div class="drift-flow-number drift-flow-number--teal">02</div>
+          <h3 class="drift-flow-title">Connect before you go</h3>
+          <p class="drift-flow-body">Send Connect requests to people with aligned interests. Conversations begin before departure. The trip already feels different.</p>
+        </div>
+        <div class="drift-flow-step fade-up">
+          <div class="drift-flow-number drift-flow-number--blue">03</div>
+          <h3 class="drift-flow-title">Cross paths on-site</h3>
+          <p class="drift-flow-body">Live Map and proximity alerts make the invisible visible. Even unplanned encounters get captured by Drift.</p>
+        </div>
+        <div class="drift-flow-step fade-up">
+          <div class="drift-flow-number drift-flow-number--accent">04</div>
+          <h3 class="drift-flow-title">Relationships outlast the trip</h3>
+          <p class="drift-flow-body">Connections don't expire. When you meet again on a future trip, Drift proves the relationship was real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features (Bento Grid) -->
+  <Drift lang={lang} />
+
+  <!-- Why Travel -->
+  <WhyTravel lang={lang} />
+
+  <!-- CTA -->
+  <section class="section section--dark drift-cta-section">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="drift-cta-heading fade-up">Let the current carry you<br />to someone worth meeting.</h2>
+      <p class="section-body fade-up" style="margin:1.5rem auto 2.5rem;text-align:center;">
+        Drift is currently in development. Stay tuned for updates.
+      </p>
+      <a href="mailto:hello@cybertrip.co.jp" class="btn-pill btn-pill--accent magnetic-btn fade-up">
+        <span class="magnetic-btn-text">Contact Us <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</Base>

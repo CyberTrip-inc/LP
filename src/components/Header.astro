@@ -1,0 +1,40 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+  page?: string;
+}
+
+const { lang, page = 'home' } = Astro.props;
+const isEn = lang === 'en';
+const base = isEn ? '/en' : '/ja';
+---
+
+<header class="header header--hero">
+  <a href={`${base}/`} class="logo">
+    <span class="logo-mark"><img src="/icon.png" alt="" width="34" height="34" /></span>
+    CyberTrip
+  </a>
+
+  <nav class="nav-main">
+    <a href={`${base}/philosophy/`} class:list={['nav-link', { active: page === 'philosophy' }]}>
+      Philosophy
+    </a>
+    <a href={`${base}/drift/`} class:list={['nav-link', { active: page === 'drift' }]}>
+      Drift
+    </a>
+    <a href={`${base}/company/`} class:list={['nav-link', { active: page === 'company' }]}>
+      Company
+    </a>
+  </nav>
+
+  <div class="header-right">
+    <div class="lang-switch">
+      <a href="/ja/" class:list={[{ active: !isEn }]}>JP</a>
+      <a href="/en/" class:list={[{ active: isEn }]}>EN</a>
+    </div>
+  </div>
+
+  <div class="hamburger" aria-label={isEn ? 'Menu' : 'メニュー'}>
+    <span></span><span></span><span></span>
+  </div>
+</header>

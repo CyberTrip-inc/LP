@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Closing from '../../components/Closing.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'en';
+const base = '/en';
+---
+
+<Base
+  title="CyberTrip — We move people from screens to real places."
+  description="Maximizing the value of physical experience through technology. Drift: the only travel app where relationships accumulate trip by trip. CyberTrip, Inc."
+  lang={lang}
+>
+  <Header lang={lang} />
+  <Hero lang={lang} />
+
+  <section class="section section--dark home-cards-section">
+    <div class="section-inner">
+      <div class="home-cards">
+        <a href={`${base}/philosophy/`} class="home-card home-card--philosophy">
+          <span class="home-card-label">Philosophy</span>
+          <h3 class="home-card-title">We are already<br />"too connected."</h3>
+          <p class="home-card-body">Maximizing the value of physical experience through technology. Our philosophy for bringing people back to reality.</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+        <a href={`${base}/drift/`} class="home-card home-card--drift">
+          <span class="home-card-label">Product</span>
+          <h3 class="home-card-title">DRIFT</h3>
+          <p class="home-card-body">The only travel app where relationships accumulate trip by trip. Aiming for #1 in encounter success rate.</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+        <a href={`${base}/company/`} class="home-card home-card--company">
+          <span class="home-card-label">Company</span>
+          <h3 class="home-card-title">Company Profile</h3>
+          <p class="home-card-body">A company using technology (Cyber) to design trips (Trip) that bring people back to the real world.</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Closing lang={lang} />
+  <Footer lang={lang} />
+</Base>

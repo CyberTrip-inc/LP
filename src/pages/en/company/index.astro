@@ -1,0 +1,136 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+
+const lang = 'en';
+
+const rows = [
+  { key: 'Company', value: 'CyberTrip, Inc.' },
+  { key: 'Representatives', value: 'Kazuya Kumakura / Yusei Uehara' },
+  { key: 'Capital', value: 'JPY 100,000' },
+  { key: 'Business', value: 'Planning, development, and operation of travel-related applications' },
+  { key: 'URL', value: 'cybertrip.co.jp' },
+];
+
+const values = [
+  {
+    label: 'Mission',
+    en: '',
+    title: 'We move people<br />from screens to real places.',
+    body: 'Every tech company in the world competes for disposable time. CyberTrip uses technology not as an entrance, but as an exit.',
+    color: 'accent',
+  },
+  {
+    label: 'Vision',
+    en: '',
+    title: 'A world where real experiences<br />enrich real lives.',
+    body: 'The more digital evolves, the more the value of "being there" rises relatively.',
+    color: 'teal',
+  },
+];
+
+const founders = [
+  {
+    name: 'Kazuya Kumakura',
+    nameEn: '熊倉 一哉',
+    role: 'Co-Founder / CEO',
+  },
+  {
+    name: 'Yusei Uehara',
+    nameEn: '上原 裕生',
+    role: 'Co-Founder / CTO',
+  },
+];
+---
+
+<Base
+  title="Company — CyberTrip"
+  description="A company that uses technology to design trips that bring people back to the real world."
+  lang={lang}
+  page="company"
+>
+  <Header lang={lang} page="company" />
+
+  <section class="page-hero page-hero--company">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Company</p>
+      <h1 class="page-hero-title">A company that moves people<br />from screens to real places.</h1>
+      <p class="page-hero-sub">
+        Experiences are born, accumulated as memories, and circulate as value again.<br />
+        CyberTrip was founded to design that very structure.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div class="section-label-line">
+        <span class="section-label">Vision / Mission</span>
+      </div>
+      <div class="company-mv-grid">
+        {values.map((item) => (
+          <div class={`company-mv-card company-mv-card--${item.color}`}>
+            <div class="company-mv-label">{item.label}</div>
+            {item.en && <p class="company-mv-en">{item.en}</p>}
+            <h3 class="company-mv-title" set:html={item.title} />
+            <p class="company-mv-body">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--darker">
+    <div class="section-inner">
+      <div class="section-label-line">
+        <span class="section-label">Founders</span>
+      </div>
+      <div class="founders-grid">
+        {founders.map((f) => (
+          <div class="founder-card">
+            <div class="founder-avatar">{f.name.charAt(0)}</div>
+            <div class="founder-info">
+              <div class="founder-name">{f.name}</div>
+              <div class="founder-name-en">{f.nameEn}</div>
+              <div class="founder-role">{f.role}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div class="section-label-line">
+        <span class="section-label">Company Profile</span>
+      </div>
+      <div class="company-table-wrap">
+        {rows.map((row) => (
+          <div class="company-row">
+            <span class="company-key">{row.key}</span>
+            <span class="company-value">{row.value}</span>
+          </div>
+        ))}
+      </div>
+      <p class="company-note fade-up">
+        A company that uses technology (Cyber) to design trips (Trip) that bring people back to the real world. Founded to design the very structure where experiences are born, accumulated as memories, and circulate as value.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--darker" style="padding-top:4rem;">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="drift-cta-heading fade-up">Let's build the future together.</h2>
+      <p class="section-body fade-up" style="margin:1.5rem auto 2.5rem;text-align:center;">
+        For recruitment, partnerships, and press inquiries.
+      </p>
+      <a href="mailto:hello@cybertrip.co.jp" class="btn-pill btn-pill--accent magnetic-btn fade-up">
+        <span class="magnetic-btn-text">Contact Us <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</Base>

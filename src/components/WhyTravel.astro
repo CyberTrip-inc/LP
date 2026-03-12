@@ -1,0 +1,59 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const stats = isEn
+  ? [
+      { number: '$11.7', unit: 'T', color: 'stat-number--accent', label: 'Global Travel & Tourism<br />Market Size (TAM)' },
+      { number: '~10', unit: '%', color: 'stat-number--teal', label: 'Share of global GDP<br />from Travel & Tourism' },
+      { number: '1/3', unit: '', color: 'stat-number--blue', label: 'Of new global jobs by 2035<br />expected from travel industry' },
+    ]
+  : [
+      { number: '11.7', unit: '兆', color: 'stat-number--accent', label: 'USD<br />世界の旅行・観光市場規模' },
+      { number: '~10', unit: '%', color: 'stat-number--teal', label: '世界GDPに占める<br />旅行・観光産業の割合' },
+      { number: '1/3', unit: '', color: 'stat-number--blue', label: '2035年までに世界の新規雇用の<br />約3分の1を旅行産業が担う見込み' },
+    ];
+---
+
+<section class="section section--darker" id="why-travel">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Why Travel</span>
+    </div>
+
+    <div class="section-grid">
+      <div>
+        <h2 class="section-heading fade-up" style="color:#fff;">
+          {isEn ? 'Why "travel"?' : 'なぜ「旅」なのか。'}
+        </h2>
+        <p class="section-body">
+          {isEn
+            ? 'When AI replaces work and humanity gains free time, what people seek is movement, experiences, and encounters. Travel is the most human-intensive growth market in the AI era.'
+            : 'AIが仕事を代替し、人類が自由時間を手にしたとき、人が求めるものは「移動・体験・出会い」。旅行は、AI時代において最も人間性が濃く現れる成長市場です。'}
+        </p>
+      </div>
+      <div>
+        <p class="section-body" style="margin-bottom:2rem;">
+          {isEn
+            ? 'Travel simultaneously possesses clear beginnings and endings, limited time frames, and wide behavioral and emotional amplitude. It is the social context where relationships naturally emerge, are verified in short timeframes, and remain as memories.'
+            : '旅は「始まりと終わりが明確」「時間が限定されている」「行動と感情の振れ幅が大きい」という特性を同時に持つ、人と人の関係性が自然に発生し、短期間で検証され、記憶として残る社会的文脈です。'}
+        </p>
+      </div>
+    </div>
+
+    <div class="stats-grid" id="market">
+      {stats.map((stat) => (
+        <div class="stat-card">
+          <div class={`stat-number ${stat.color}`}>
+            {stat.number}{stat.unit && <span class="stat-unit">{stat.unit}</span>}
+          </div>
+          <div class="stat-label" set:html={stat.label} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

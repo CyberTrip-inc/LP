@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: 'ja' | 'en';
+  page?: string;
+}
+
+const { title, description, lang, page = 'home' } = Astro.props;
+const isEn = lang === 'en';
+const basePath = isEn ? '/en' : '/ja';
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="alternate" hreflang="ja" href={`https://cybertrip.co.jp/ja/`}>
+  <link rel="alternate" hreflang="en" href={`https://cybertrip.co.jp/en/`}>
+  <link rel="icon" type="image/png" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class:list={[{ en: isEn }]} data-page={page}>
+  <slot />
+
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script is:inline src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  <script is:inline src="/scripts/main.js"></script>
+  <script is:inline src="/scripts/premium-animations.js"></script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+  @import '../styles/premium-animations.css';
+</style>

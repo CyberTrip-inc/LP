@@ -1,0 +1,52 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const rows = isEn
+  ? [
+      { key: 'Company', value: 'CyberTrip, Inc.' },
+      { key: 'Representatives', value: 'Kazuya Kumakura / Yusei Uehara' },
+      { key: 'Capital', value: 'JPY 100,000' },
+      { key: 'URL', value: 'cybertrip.co.jp' },
+    ]
+  : [
+      { key: '会社名', value: '株式会社CyberTrip' },
+      { key: '代表取締役', value: '熊倉 一哉 / 上原 裕生' },
+      { key: '資本金', value: '10万円' },
+      { key: 'URL', value: 'cybertrip.co.jp' },
+    ];
+---
+
+<section class="section section--darker" id="company">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Company</span>
+    </div>
+    <div class="section-grid">
+      <div>
+        <h2 class="section-heading fade-up">
+          {isEn ? 'Company Profile' : '会社概要'}
+        </h2>
+      </div>
+      <div>
+        <div class="company-grid fade-up">
+          {rows.map((row) => (
+            <div class="company-row">
+              <span class="company-key">{row.key}</span>
+              <span class="company-value">{row.value}</span>
+            </div>
+          ))}
+        </div>
+        <p class="company-note fade-up">
+          {isEn
+            ? 'A company that uses technology (Cyber) to design trips (Trip) that bring people back to the real world. Founded to design the very structure where experiences are born, accumulated as memories, and circulate as value.'
+            : 'テクノロジー（Cyber）を使って、人を現実世界へ連れ出す旅（Trip）を設計する会社。体験が生まれ、記憶として蓄積され、再び価値として循環する構造そのものを設計するために設立。'}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

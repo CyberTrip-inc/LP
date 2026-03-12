@@ -1,0 +1,113 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const features = isEn
+  ? [
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: 'bento-card--wide bento-card--accent',
+        label: 'MyTrips',
+        title: 'Register your future trips.<br />Find people heading the same way.',
+        body: 'Enter your dates, destination, and purpose. Drift instantly surfaces other travelers with overlapping plans — solo or groups. Connect before you depart, meet when you arrive.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--teal',
+        label: 'Live Map',
+        title: 'See who\'s around you,<br />right now.',
+        body: 'A full-screen map showing nearby travelers in real time. Explore a destination before you go, or find someone to meet in the moment — even when plans fall through.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--blue',
+        cardClass: 'bento-card--blue',
+        label: 'Encounters',
+        title: 'Serendipity,<br />engineered.',
+        body: 'Get notified when another active traveler enters your radius. See where you crossed paths on a map. Some encounters happen days later — the notification stays, so the chance doesn\'t disappear.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/><circle cx="12" cy="12" r="2"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: '',
+        label: 'AI Concierge',
+        title: 'Tell it what you want.<br />It finds who and where.',
+        body: '"Find surfers near me." "Best cafés in Waikiki." "Anyone up for a food tour next week?" The AI searches travelers, places, and your trip schedule — returning people and spots, not just text.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-2 4-4 7-2-3-4-5.05-4-7a4 4 0 0 1 4-4z"/><path d="M12 13v9"/><path d="M9 18h6"/><circle cx="12" cy="6" r="1"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--wide',
+        label: 'UGC Ecosystem',
+        title: 'Your trip story becomes<br />the next traveler\'s invitation.',
+        body: 'Post trip photos to Instagram and TikTok directly from the app — with AI-polished captions and auto-tagged travel partners. Every shared memory becomes organic growth that brings new travelers into Drift.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
+      },
+    ]
+  : [
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: 'bento-card--wide bento-card--accent',
+        label: 'MyTrips',
+        title: '未来の旅を登録する。<br />同じ方向に向かう人が見つかる。',
+        body: '期間・場所・目的を入力するだけ。Driftが同時期に同じ場所へ向かうトラベラーを即座に表示。ソロでもグループでも、出発前につながり、現地で出会える。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--teal',
+        label: 'Live Map',
+        title: '今、近くにいる人が<br />見える。',
+        body: 'フルスクリーンの地図上に、リアルタイムで近くのトラベラーを表示。行き先の下調べにも、予定が崩れた瞬間のリカバリーにも。旅先のローカルとつながることも可能。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--blue',
+        cardClass: 'bento-card--blue',
+        label: 'すれ違い',
+        title: '偶然の出会いを、<br />逃さない。',
+        body: '近くにアクティブなトラベラーが来たら通知。地図上にすれ違った場所が表示される。その日に会えなくても、旅は続く。通知は残り、チャンスは消えない。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"/><circle cx="12" cy="12" r="2"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: '',
+        label: 'AIコンシェルジュ',
+        title: 'やりたいことを伝えるだけ。<br />人も場所も、見つかる。',
+        body: '「サーフィン好きな人を探して」「ワイキキのカフェ」「来週カフェ巡りしたい人いる？」——AIがトラベラー・スポット・旅スケジュールを横断検索。テキストではなく、人と場所を返す。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-2 4-4 7-2-3-4-5.05-4-7a4 4 0 0 1 4-4z"/><path d="M12 13v9"/><path d="M9 18h6"/><circle cx="12" cy="6" r="1"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--wide',
+        label: 'UGCエコシステム',
+        title: 'あなたの旅の記憶が、<br />次の旅人への招待状になる。',
+        body: 'アプリから直接InstagramやTikTokに投稿。AIが投稿文を添削し、旅仲間を自動タグ付け。共有されたすべての思い出が、新しいトラベラーをDriftに連れてくるオーガニックな成長エンジンになる。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
+      },
+    ];
+---
+
+<section class="section section--dark" id="drift">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Features</span>
+    </div>
+
+    <div class="bento-grid">
+      {features.map((card) => (
+        <div class={`bento-card ${card.cardClass}`}>
+          <div class={`bento-icon ${card.iconClass}`} set:html={card.iconSvg} />
+          <div class="bento-card-label">{card.label}</div>
+          <div class="bento-card-title" set:html={card.title} />
+          <div class="bento-card-body">{card.body}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

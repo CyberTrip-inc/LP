@@ -1,0 +1,31 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Philosophy from '../../../components/Philosophy.astro';
+import ImageRow from '../../../components/ImageRow.astro';
+import Concept from '../../../components/Concept.astro';
+import VisionMission from '../../../components/VisionMission.astro';
+import Footer from '../../../components/Footer.astro';
+
+const lang = 'en';
+---
+
+<Base
+  title="Philosophy — CyberTrip"
+  description="We are already too connected. CyberTrip's philosophy on maximizing the value of physical experience through technology."
+  lang={lang}
+  page="philosophy"
+>
+  <Header lang={lang} page="philosophy" />
+  <div class="page-hero page-hero--philosophy">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Philosophy</p>
+      <h1 class="page-hero-title">We are already<br />"too connected."</h1>
+    </div>
+  </div>
+  <Philosophy lang={lang} />
+  <ImageRow lang={lang} />
+  <Concept lang={lang} />
+  <VisionMission lang={lang} />
+  <Footer lang={lang} />
+</Base>

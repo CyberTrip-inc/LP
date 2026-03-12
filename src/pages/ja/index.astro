@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Closing from '../../components/Closing.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'ja';
+const base = '/ja';
+---
+
+<Base
+  title="CyberTrip — テクノロジーで、人を現実世界へ連れ出す。"
+  description="テクノロジーで、物理体験の価値を最大化する。旅を単位に人間関係が蓄積される唯一の旅行アプリ Drift を開発する株式会社CyberTrip。"
+  lang={lang}
+>
+  <Header lang={lang} />
+  <Hero lang={lang} />
+
+  <section class="section section--dark home-cards-section">
+    <div class="section-inner">
+      <div class="home-cards">
+        <a href={`${base}/philosophy/`} class="home-card home-card--philosophy">
+          <span class="home-card-label">Philosophy</span>
+          <h3 class="home-card-title">私たちは、すでに<br />"繋がりすぎている"。</h3>
+          <p class="home-card-body">テクノロジーで、物理体験の価値を最大化する。人を現実へ連れ出すための思想。</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+        <a href={`${base}/drift/`} class="home-card home-card--drift">
+          <span class="home-card-label">Product</span>
+          <h3 class="home-card-title">DRIFT</h3>
+          <p class="home-card-body">旅を単位に、人間関係が蓄積される唯一の旅行アプリ。出会いの「成功率」で世界一を目指す。</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+        <a href={`${base}/company/`} class="home-card home-card--company">
+          <span class="home-card-label">Company</span>
+          <h3 class="home-card-title">会社概要</h3>
+          <p class="home-card-body">テクノロジー(Cyber)を使って、人を現実世界へ連れ出す旅(Trip)を設計する会社。</p>
+          <span class="home-card-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Closing lang={lang} />
+  <Footer lang={lang} />
+</Base>

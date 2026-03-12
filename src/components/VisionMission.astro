@@ -1,0 +1,54 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const items = isEn
+  ? [
+      {
+        label: 'Mission',
+        text: 'We move people<br />from screens to real places.',
+        body: 'Every tech company in the world competes for disposable time. CyberTrip uses technology not as an entrance, but as an exit. We open the door to "inefficient, yet irreplaceable experiences" through technology.',
+      },
+      {
+        label: 'Vision',
+        text: 'A world where real experiences<br />enrich real lives.',
+        body: 'The more digital evolves, the more the value of "being there" rises relatively. We aim for a world where everyone naturally believes: "Going beyond the screen isn\'t inefficient. It enriches your life."',
+      },
+    ]
+  : [
+      {
+        label: 'Mission',
+        en: 'We move people from screens to real places.',
+        text: 'テクノロジーで、<br />人を現実世界へ連れ出す。',
+        body: '世界中のテクノロジー企業が、人々の可処分時間を奪い合っている。CyberTripは、テクノロジーを「入口」ではなく「出口」として使う。テクノロジーで「非効率な、でもかけがえのない体験」への扉を開く。',
+      },
+      {
+        label: 'Vision',
+        en: 'A world where real experiences enrich real lives.',
+        text: '画面の外で生まれる体験が、<br />人生を豊かにする世界。',
+        body: 'デジタルが進化すればするほど、「現地にいること」の価値は相対的に上がっていく。「画面の外に出ることは、非効率じゃない。それは、人生を豊かにする行為だ」そう誰もが自然に思える世界を作る。',
+      },
+    ];
+---
+
+<section class="section section--dark" id="vision">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Vision / Mission</span>
+    </div>
+    <div class="vm-blocks">
+      {items.map((item) => (
+        <div class="vm-item">
+          <div class="vm-label">{item.label}</div>
+          {'en' in item && item.en && <p class="vm-en">{item.en}</p>}
+          <p class="vm-text" set:html={item.text} />
+          <p class="vm-body">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

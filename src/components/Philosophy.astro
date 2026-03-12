@@ -1,0 +1,57 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const items = isEn
+  ? [
+      'What stays in memory is always a physical experience.',
+      'Sharing the same place, the same time. Conversations and silences born from chance.',
+      'Value that can only exist on-site is what deeply marks a life.',
+    ]
+  : [
+      '人の記憶に残るのは、常に"物理体験"である。',
+      '同じ場所で、同じ時間を過ごしたこと。偶然生まれた会話や沈黙。',
+      '現地でしか成立しない価値が、人の人生に強く刻まれる。',
+    ];
+---
+
+<section class="section section--dark" id="philosophy">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Philosophy</span>
+    </div>
+    <div class="section-grid">
+      <div>
+        <h2 class="philosophy-heading fade-up">
+          {isEn ? (
+            <>We are already<br />"too connected."</>
+          ) : (
+            <>私たちは、すでに<br />"繋がりすぎている"。</>
+          )}
+        </h2>
+        <p class="section-body">
+          {isEn
+            ? 'Technology has reduced the cost of connecting to nearly zero. Yet many feel that despite being connected, they have no experiences worth remembering.'
+            : 'テクノロジーの進化により、人と人が「つながる」コストはほぼゼロになった。しかし多くの人が「つながっているはずなのに、記憶に残る体験がない」と感じている。'}
+        </p>
+      </div>
+      <div>
+        <div class="philosophy-statements">
+          {items.map((text, i) => (
+            <div class="philosophy-item">
+              <span class="philosophy-num">{String(i + 1).padStart(2, '0')}</span>
+              <p class="philosophy-text">{text}</p>
+            </div>
+          ))}
+        </div>
+        <a href="#concept" class="btn-pill btn-pill--white">
+          Concept <span class="arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

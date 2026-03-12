@@ -1,0 +1,23 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const images = [
+  { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75', alt: isEn ? 'Mountains' : '山の風景' },
+  { src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75', alt: isEn ? 'Human connection' : '人々の繋がり' },
+  { src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=75', alt: isEn ? 'A face' : '人の表情' },
+  { src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=75', alt: isEn ? 'Forest light' : '森の木漏れ日' },
+];
+---
+
+<div class="image-row">
+  {images.map((img) => (
+    <div class="img-cell">
+      <img src={img.src} alt={img.alt} loading="lazy" />
+    </div>
+  ))}
+</div>

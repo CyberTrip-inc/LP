@@ -1,0 +1,54 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const base = isEn ? '/en' : '/ja';
+---
+
+<section class="hero">
+  <div class="hero-aurora">
+    <div class="hero-blob hero-blob--1"></div>
+    <div class="hero-blob hero-blob--2"></div>
+    <div class="hero-blob hero-blob--3"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">We move people from screens to real places</p>
+
+    {isEn ? (
+      <h1 class="hero-title">
+        Back to<br />Reality.
+      </h1>
+      <p class="hero-subtitle">
+        We don't keep people inside screens. We push them out.<br />
+        Technology that opens doors to irreplaceable experiences.
+      </p>
+    ) : (
+      <h1 class="hero-title-ja">
+        テクノロジーで、<br />人を現実世界へ<br />連れ出す。
+      </h1>
+      <p class="hero-subtitle">
+        画面の中に閉じ込めるのではなく、画面の外へ送り出す。<br />
+        デジタルの力で、かけがえのない体験への扉を開く。
+      </p>
+    )}
+
+    <div class="hero-ctas">
+      <a href={`${base}/drift/`} class="btn-pill btn-pill--accent magnetic-btn">
+        <span class="magnetic-btn-text">{isEn ? 'Discover Drift' : 'Drift を知る'} <span class="arrow">&rarr;</span></span>
+      </a>
+      <a href={`${base}/philosophy/`} class="btn-pill btn-pill--outline magnetic-btn">
+        <span class="magnetic-btn-text">Philosophy <span class="arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>

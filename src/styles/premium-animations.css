@@ -1,0 +1,370 @@
+/* ============================================
+   CyberTrip — Premium Animation Styles
+   Companion CSS for premium-animations.js
+
+   7. Gradient Beam/Glow (CSS-only, Vercel-style)
+   + support styles for all 10 animation effects
+   ============================================ */
+
+/* ============================================
+   3. HORIZONTAL SCROLL SECTION
+   ============================================ */
+.horizontal-scroll-section {
+  overflow: hidden;
+  position: relative;
+}
+
+.horizontal-scroll-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+
+.horizontal-panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 6%;
+  position: relative;
+}
+
+/* Variant: narrower panels for card carousels */
+.horizontal-panel--card {
+  width: 60vw;
+  min-width: 400px;
+  max-width: 800px;
+  padding: 4rem 2rem;
+}
+
+/* ============================================
+   4. MAGNETIC BUTTON — base reset
+   ============================================ */
+.magnetic-btn {
+  will-change: transform;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.magnetic-btn-text {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================
+   6. STAGGER GRID
+   ============================================ */
+.stagger-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.stagger-grid-item {
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   7. GRADIENT BEAM / GLOW ANIMATION
+   ============================================
+   Vercel-style animated beam effect.
+   Pure CSS — no JS needed.
+
+   Usage:
+     <div class="beam-container">
+       <div class="beam beam--horizontal"></div>
+     </div>
+
+   Or on a card border:
+     <div class="beam-border-card">
+       <div class="beam-border-card-content">Content</div>
+     </div>
+*/
+
+/* --- Horizontal beam (like Vercel's connecting lines) --- */
+.beam-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.beam {
+  position: absolute;
+  pointer-events: none;
+}
+
+.beam--horizontal {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(74, 142, 237, 0) 20%,
+    rgba(74, 142, 237, 0.6) 30%,
+    rgba(74, 142, 237, 0.8) 40%,
+    rgba(74, 142, 237, 0.6) 50%,
+    rgba(74, 142, 237, 0) 60%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: beamSlideH 3s ease-in-out infinite;
+}
+
+.beam--vertical {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(74, 142, 237, 0) 20%,
+    rgba(74, 142, 237, 0.6) 30%,
+    rgba(74, 142, 237, 0.8) 40%,
+    rgba(74, 142, 237, 0.6) 50%,
+    rgba(74, 142, 237, 0) 60%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: beamSlideV 3s ease-in-out infinite;
+}
+
+@keyframes beamSlideH {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes beamSlideV {
+  0%   { background-position: 0 200%; }
+  100% { background-position: 0 -200%; }
+}
+
+/* --- Beam glow dot (pulsing circle at intersection) --- */
+.beam-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #4a8eed);
+  box-shadow:
+    0 0 8px 2px rgba(74, 142, 237, 0.4),
+    0 0 20px 4px rgba(74, 142, 237, 0.2);
+  animation: beamDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes beamDotPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.5); }
+}
+
+/* --- Animated border glow card (Vercel card style) --- */
+.beam-border-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 1px; /* border thickness */
+  background: linear-gradient(
+    var(--beam-angle, 0deg),
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(74, 142, 237, 0.5) 25%,
+    rgba(74, 125, 217, 0.5) 50%,
+    rgba(43, 181, 160, 0.3) 75%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  animation: beamBorderRotate 4s linear infinite;
+}
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes beamBorderRotate {
+  0%   { --beam-angle: 0deg; }
+  100% { --beam-angle: 360deg; }
+}
+
+/* Fallback for browsers that don't support @property */
+@supports not (background: paint(something)) {
+  @keyframes beamBorderRotate {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .beam-border-card {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(74, 142, 237, 0.5),
+      rgba(74, 125, 217, 0.5),
+      rgba(43, 181, 160, 0.3),
+      rgba(255, 255, 255, 0.06)
+    );
+    background-size: 300% 100%;
+    animation: beamBorderRotate 4s ease infinite;
+  }
+}
+
+.beam-border-card-content {
+  background: var(--dark-gray, #1a1a1e);
+  border-radius: 15px; /* 16px minus 1px padding */
+  padding: 2.5rem;
+  height: 100%;
+}
+
+/* --- Static glow effect (for decorative accents) --- */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.glow--accent {
+  background: var(--accent, #4a8eed);
+}
+
+.glow--blue {
+  background: var(--blue, #4a7dd9);
+}
+
+.glow--teal {
+  background: var(--teal, #2bb5a0);
+}
+
+/* ============================================
+   9. SECTION TRANSITION THEME SUPPORT
+   ============================================ */
+body[data-active-theme="dark"] .header {
+  --header-text: rgba(255, 255, 255, 0.7);
+}
+
+body[data-active-theme="light"] .header.header--scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+body[data-active-theme="light"] .header.header--scrolled .nav-item > a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+body[data-active-theme="light"] .header.header--scrolled .nav-item > a:hover {
+  color: var(--black, #0a0a0b);
+}
+
+body[data-active-theme="light"] .header.header--scrolled .logo {
+  color: var(--black, #0a0a0b);
+}
+
+body[data-active-theme="light"] .header.header--scrolled .hamburger span {
+  background: var(--black, #0a0a0b);
+}
+
+/* smooth the header transition between themes */
+.header,
+.header .logo,
+.header .nav-item > a,
+.header .hamburger span {
+  transition:
+    background 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   10. TEXT HIGHLIGHT ON SCROLL
+   ============================================ */
+.text-highlight-scroll {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.highlight-word {
+  transition: opacity 0.1s ease;
+}
+
+/* ============================================
+   GRADIENT TEXT UTILITY (Vercel-style)
+   ============================================
+   Usage: <span class="gradient-text">Premium Text</span>
+*/
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--white, #ffffff) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    var(--accent, #4a8eed) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated variant */
+.gradient-text--animated {
+  background: linear-gradient(
+    90deg,
+    var(--white, #ffffff),
+    var(--accent, #4a8eed),
+    var(--blue, #4a7dd9),
+    var(--teal, #2bb5a0),
+    var(--white, #ffffff)
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientTextShift 6s ease infinite;
+}
+
+@keyframes gradientTextShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   REDUCED MOTION — disable all premium effects
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .beam--horizontal,
+  .beam--vertical,
+  .beam-dot,
+  .beam-border-card,
+  .gradient-text--animated {
+    animation: none !important;
+  }
+
+  .highlight-word {
+    opacity: 1 !important;
+  }
+
+  .horizontal-scroll-track {
+    will-change: auto !important;
+  }
+
+  .stagger-grid-item {
+    will-change: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-parallax] {
+    transform: none !important;
+  }
+}
