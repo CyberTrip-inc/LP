@@ -2683,3 +2683,297 @@ body.has-banner .nav-main.open {
     min-width: auto;
   }
 }
+
+/* ============================================
+   App Preview (Real Screenshots)
+   ============================================ */
+.app-preview-screens {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+.app-preview-item {
+  text-align: center;
+}
+.app-preview-phone {
+  background: #1a1f2e;
+  border-radius: 32px;
+  padding: 10px;
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(74,142,237,0.08);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s;
+}
+.app-preview-phone:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(74,142,237,0.15);
+}
+.app-preview-phone img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+}
+.app-preview-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+.app-preview-desc {
+  font-size: 0.85rem;
+  color: var(--mid-gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .app-preview-screens {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 2rem;
+  }
+}
+
+/* ============================================
+   Target Users
+   ============================================ */
+.target-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.target-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.target-card:hover {
+  border-color: rgba(74,142,237,0.3);
+  transform: translateY(-4px);
+}
+.target-emoji {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.target-title {
+  font-family: var(--font-ja);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.target-body {
+  font-size: 0.9rem;
+  color: var(--mid-gray);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .target-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   Business Model
+   ============================================ */
+.biz-model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.biz-model-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.biz-model-card:hover {
+  border-color: rgba(74,142,237,0.3);
+  transform: translateY(-4px);
+}
+.biz-model-phase {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.biz-model-title {
+  font-family: var(--font-ja);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.biz-model-body {
+  font-size: 0.9rem;
+  color: var(--mid-gray);
+  line-height: 1.7;
+}
+@media (max-width: 768px) {
+  .biz-model-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   Roadmap
+   ============================================ */
+.roadmap {
+  position: relative;
+  padding-left: 2rem;
+}
+.roadmap::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.08);
+}
+.roadmap-item {
+  position: relative;
+  padding-bottom: 2.5rem;
+  padding-left: 1.5rem;
+}
+.roadmap-item:last-child { padding-bottom: 0; }
+.roadmap-dot {
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--dark-gray);
+  border: 2px solid rgba(255,255,255,0.15);
+  z-index: 1;
+}
+.roadmap-item--active .roadmap-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(74,142,237,0.4);
+}
+.roadmap-date {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+.roadmap-title {
+  font-family: var(--font-ja);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+.roadmap-body {
+  font-size: 0.9rem;
+  color: var(--mid-gray);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Waitlist Form
+   ============================================ */
+.waitlist-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.waitlist-input {
+  flex: 1;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--font-ja);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.waitlist-input::placeholder {
+  color: var(--mid-gray);
+}
+.waitlist-input:focus {
+  border-color: var(--accent);
+}
+.waitlist-btn {
+  padding: 0.85rem 1.8rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-ja);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s, transform 0.2s;
+}
+.waitlist-btn:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+.waitlist-btn .arrow {
+  margin-left: 0.3rem;
+}
+.waitlist-note {
+  font-size: 0.8rem;
+  color: var(--mid-gray);
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .waitlist-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .waitlist-btn {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   Home Stats (Why Now)
+   ============================================ */
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.home-stat-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.home-stat-unit {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-left: 0.1em;
+}
+.home-stat-label {
+  font-size: 0.85rem;
+  color: var(--mid-gray);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .home-stats { grid-template-columns: 1fr; gap: 2.5rem; }
+  .home-stat-number { font-size: 2.8rem; }
+}
