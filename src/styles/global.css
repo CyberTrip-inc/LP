@@ -2516,6 +2516,72 @@ body.has-banner .nav-main.open {
   }
 }
 
+/* --- Why Drift (Differentiation) --- */
+.why-drift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.why-drift-card {
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s;
+}
+
+.why-drift-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.why-drift-card--accent {
+  background: rgba(74, 142, 237, 0.08);
+  border-color: rgba(74, 142, 237, 0.25);
+}
+
+.why-drift-card--accent:hover {
+  border-color: rgba(74, 142, 237, 0.4);
+}
+
+.why-drift-icon {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.why-drift-card--accent .why-drift-icon {
+  color: var(--accent);
+}
+
+.why-drift-title {
+  font-family: var(--font-ja);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--light-gray);
+  margin-bottom: 0.75rem;
+}
+
+.en .why-drift-title {
+  font-family: var(--font-en);
+}
+
+.why-drift-body {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.why-drift-card--accent .why-drift-body {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .why-drift-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- News / Notice Page --- */
 .news-list {
   display: flex;
