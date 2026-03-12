@@ -1148,69 +1148,6 @@ body.has-banner .nav-main.open {
   line-height: 1.3;
 }
 
-/* Waitlist Form */
-.waitlist-form {
-  display: flex;
-  max-width: 480px;
-  margin: 0 auto;
-  gap: 0;
-  border-radius: 50px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.05);
-  transition: border-color 0.3s;
-}
-
-.waitlist-form:focus-within {
-  border-color: var(--accent);
-}
-
-.waitlist-input {
-  flex: 1;
-  padding: 0.9rem 1.5rem;
-  background: transparent;
-  border: none;
-  color: var(--white);
-  font-family: var(--font-ja);
-  font-size: 0.9rem;
-  outline: none;
-}
-
-.en .waitlist-input {
-  font-family: var(--font-en);
-}
-
-.waitlist-input::placeholder {
-  color: rgba(255,255,255,0.35);
-}
-
-.waitlist-btn {
-  padding: 0.9rem 2rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
-  color: var(--white);
-  border: none;
-  font-family: var(--font-ja);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: opacity 0.3s;
-}
-
-.en .waitlist-btn {
-  font-family: var(--font-en);
-}
-
-.waitlist-btn:hover {
-  opacity: 0.9;
-}
-
-.waitlist-note {
-  margin-top: 1rem;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.3);
-}
-
 /* Drift Concept */
 .drift-concept {
   display: grid;
@@ -2777,51 +2714,6 @@ body.has-banner .nav-main.open {
   .target-grid { grid-template-columns: 1fr; }
 }
 
-/* ============================================
-   Business Model
-   ============================================ */
-.biz-model-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.biz-model-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
-}
-.biz-model-card:hover {
-  border-color: rgba(74,142,237,0.3);
-  transform: translateY(-4px);
-}
-.biz-model-phase {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-.biz-model-title {
-  font-family: var(--font-ja);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.75rem;
-}
-.biz-model-body {
-  font-size: 0.9rem;
-  color: var(--mid-gray);
-  line-height: 1.7;
-}
-@media (max-width: 768px) {
-  .biz-model-grid { grid-template-columns: 1fr; }
-}
 
 /* ============================================
    Roadmap
@@ -2882,69 +2774,6 @@ body.has-banner .nav-main.open {
   line-height: 1.6;
 }
 
-/* ============================================
-   Waitlist Form
-   ============================================ */
-.waitlist-form {
-  display: flex;
-  gap: 0.75rem;
-  max-width: 480px;
-  margin: 0 auto;
-  justify-content: center;
-}
-.waitlist-input {
-  flex: 1;
-  padding: 0.85rem 1.2rem;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  font-size: 0.95rem;
-  font-family: var(--font-ja);
-  outline: none;
-  transition: border-color 0.3s;
-}
-.waitlist-input::placeholder {
-  color: var(--mid-gray);
-}
-.waitlist-input:focus {
-  border-color: var(--accent);
-}
-.waitlist-btn {
-  padding: 0.85rem 1.8rem;
-  border: none;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  font-family: var(--font-ja);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.3s, transform 0.2s;
-}
-.waitlist-btn:hover {
-  background: var(--accent-light);
-  transform: translateY(-2px);
-}
-.waitlist-btn .arrow {
-  margin-left: 0.3rem;
-}
-.waitlist-note {
-  font-size: 0.8rem;
-  color: var(--mid-gray);
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .waitlist-form {
-    flex-direction: column;
-    max-width: 100%;
-  }
-  .waitlist-btn {
-    width: 100%;
-  }
-}
 
 /* ============================================
    Home Stats (Why Now)
