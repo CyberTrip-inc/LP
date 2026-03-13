@@ -154,6 +154,37 @@ function initGSAP() {
   }
 
   // =======================================
+  // Hero scroll-fade (Apple-style)
+  // =======================================
+  const heroContent = document.getElementById('heroContent');
+  const heroOrbit = document.querySelector('.hero-orbit');
+  if (heroContent) {
+    gsap.to(heroContent, {
+      opacity: 0,
+      y: -80,
+      filter: 'blur(10px)',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: '60% top',
+        scrub: 1
+      }
+    });
+  }
+  if (heroOrbit) {
+    gsap.to(heroOrbit, {
+      opacity: 0,
+      scale: 0.8,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: '50% top',
+        scrub: 1
+      }
+    });
+  }
+
+  // =======================================
   // Parallax on hero blobs
   // =======================================
   gsap.utils.toArray('.hero-blob').forEach((blob, i) => {
