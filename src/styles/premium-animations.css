@@ -339,6 +339,239 @@ body[data-active-theme="light"] .header.header--scrolled .hamburger span {
 }
 
 /* ============================================
+   PAGE LOAD CURTAIN
+   ============================================ */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #080e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.page-curtain.revealed {
+  animation: curtainReveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0.3s forwards;
+}
+
+@keyframes curtainReveal {
+  0%   { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 100% 0); }
+}
+
+.page-curtain-logo {
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+  animation: curtainLogoIn 0.6s ease-out 0.05s forwards;
+}
+
+@keyframes curtainLogoIn {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent, #4a8eed), var(--teal, #3da5d9));
+  z-index: 10001;
+  transition: none;
+  will-change: width;
+}
+
+/* ============================================
+   CURSOR GLOW FOLLOWER
+   ============================================ */
+.cursor-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 142, 237, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  transition: opacity 0.4s;
+  opacity: 0;
+}
+
+.cursor-glow.active {
+  opacity: 1;
+}
+
+/* ============================================
+   3D TILT CARD EFFECT
+   ============================================ */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.tilt-card-inner {
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+}
+
+.tilt-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(74, 142, 237, 0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tilt-card:hover::after {
+  opacity: 1;
+}
+
+/* Card glow border on hover */
+.card-glow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--glow-angle, 135deg),
+    transparent 20%,
+    rgba(74, 142, 237, 0.4) 50%,
+    transparent 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.card-glow-border:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   HERO GRADIENT TEXT
+   ============================================ */
+.hero-title-gradient {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #ffffff 40%,
+    var(--accent, #4a8eed) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   COUNTER NUMBER GLOW
+   ============================================ */
+.counter-glow {
+  text-shadow: 0 0 40px rgba(74, 142, 237, 0.3);
+}
+
+/* ============================================
+   SMOOTH REVEAL SECTIONS
+   ============================================ */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   ENHANCED CARD HOVER — LIFT + GLOW
+   ============================================ */
+.home-card {
+  transition: border-color 0.5s !important;
+}
+
+.bento-card {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s,
+              box-shadow 0.5s !important;
+}
+
+.bento-card:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 25px 60px -15px rgba(74, 142, 237, 0.12),
+              0 0 0 1px rgba(74, 142, 237, 0.2) !important;
+}
+
+.stat-card {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s !important;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(74, 142, 237, 0.3) !important;
+}
+
+/* ============================================
+   TEXT SHIMMER EFFECT
+   ============================================ */
+@keyframes textShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.6) 0%,
+    rgba(255,255,255,1) 25%,
+    rgba(74,142,237,0.8) 50%,
+    rgba(255,255,255,1) 75%,
+    rgba(255,255,255,0.6) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 4s linear infinite;
+}
+
+/* ============================================
+   SCROLL INDICATOR ENHANCED
+   ============================================ */
+.hero-scroll-line {
+  animation: scrollPulse 2s ease-in-out infinite !important;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.5; }
+  50% { transform: scaleY(1.5); opacity: 1; }
+}
+
+/* ============================================
    REDUCED MOTION — disable all premium effects
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -366,5 +599,27 @@ body[data-active-theme="light"] .header.header--scrolled .hamburger span {
 
   [data-parallax] {
     transform: none !important;
+  }
+
+  .page-curtain {
+    display: none !important;
+  }
+
+  .cursor-glow {
+    display: none !important;
+  }
+
+  .scroll-progress {
+    display: none !important;
+  }
+
+  .text-shimmer {
+    animation: none !important;
+    -webkit-text-fill-color: unset !important;
+    background: none !important;
+  }
+
+  .hero-scroll-line {
+    animation: none !important;
   }
 }

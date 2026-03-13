@@ -29,6 +29,9 @@
     }
     gsap.registerPlugin(ScrollTrigger);
 
+    initPageCurtain();
+    initScrollProgress();
+    initCursorGlow();
     initLenisSmooth();
     initSplitText();
     initHorizontalScroll();
@@ -38,8 +41,94 @@
     initCounterAnimation();
     initSectionTransitions();
     initTextHighlight();
+    initTiltCards();
     // Gradient beam is CSS-only — no JS init needed
   });
+
+
+  /* ============================================
+     0a. PAGE LOAD CURTAIN
+     ============================================ */
+  function initPageCurtain() {
+    var curtain = document.getElementById('pageCurtain');
+    if (!curtain) return;
+
+    // Reveal after a short delay for the logo to show
+    setTimeout(function () {
+      curtain.classList.add('revealed');
+    }, 600);
+
+    // Remove from DOM after animation
+    curtain.addEventListener('animationend', function () {
+      curtain.style.display = 'none';
+    });
+  }
+
+
+  /* ============================================
+     0b. SCROLL PROGRESS BAR
+     ============================================ */
+  function initScrollProgress() {
+    var bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+
+    var ticking = false;
+    function updateProgress() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = progress + '%';
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+
+  /* ============================================
+     0c. CURSOR GLOW FOLLOWER
+     ============================================ */
+  function initCursorGlow() {
+    // Only on desktop
+    if (window.matchMedia('(hover: none)').matches) return;
+    if (window.innerWidth < 768) return;
+
+    var glow = document.getElementById('cursorGlow');
+    if (!glow) return;
+
+    var mouseX = 0, mouseY = 0;
+    var glowX = 0, glowY = 0;
+    var active = false;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!active) {
+        active = true;
+        glow.classList.add('active');
+      }
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+      active = false;
+      glow.classList.remove('active');
+    });
+
+    // Smooth follow with lerp
+    function animate() {
+      glowX += (mouseX - glowX) * 0.08;
+      glowY += (mouseY - glowY) * 0.08;
+      glow.style.left = glowX + 'px';
+      glow.style.top = glowY + 'px';
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
 
 
   /* ============================================
@@ -527,6 +616,53 @@
             }
           }
         );
+      });
+    });
+  }
+
+  /* ============================================
+     11. 3D TILT CARD EFFECT
+     ============================================
+     Adds a subtle 3D perspective tilt on hover.
+     Cards follow the cursor and spring back.
+
+     Usage in HTML:
+       <div class="tilt-card">...</div>
+  */
+  function initTiltCards() {
+    // Only on desktop
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    var cards = document.querySelectorAll('.tilt-card');
+    if (!cards.length) return;
+
+    var maxTilt = 8; // degrees
+
+    cards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+
+        var tiltX = (maxTilt / 2 - y * maxTilt).toFixed(2);
+        var tiltY = (x * maxTilt - maxTilt / 2).toFixed(2);
+
+        card.style.transform = 'perspective(1000px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateY(-4px)';
+
+        // Update CSS custom properties for glow position
+        card.style.setProperty('--mouse-x', (x * 100).toFixed(0) + '%');
+        card.style.setProperty('--mouse-y', (y * 100).toFixed(0) + '%');
+      });
+
+      card.addEventListener('mouseleave', function () {
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          y: 0,
+          duration: 0.6,
+          ease: 'elastic.out(1, 0.5)',
+          clearProps: 'transform'
+        });
       });
     });
   }

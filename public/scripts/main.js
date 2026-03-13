@@ -71,40 +71,52 @@ function initGSAP() {
   const smoothEase = 'expo.out';
 
   // =======================================
-  // Hero entrance — cinematic stagger
+  // Hero entrance — Apple-level cinematic stagger
   // =======================================
-  const heroTimeline = gsap.timeline({ delay: 0.4 });
+  const heroTimeline = gsap.timeline({ delay: 0.8 });
 
   const heroEyebrow = document.querySelector('.hero-eyebrow');
   if (heroEyebrow) {
-    heroTimeline.to(heroEyebrow, {
-      opacity: 1,
-      duration: 0.8,
-      ease: premiumEase
-    });
+    heroTimeline.fromTo(heroEyebrow,
+      { opacity: 0, y: 15, filter: 'blur(8px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: premiumEase }
+    );
   }
 
   const heroTitle = document.querySelector('.hero-title, .hero-title-ja');
   if (heroTitle) {
     heroTimeline.fromTo(heroTitle,
-      { opacity: 0, y: 50, clipPath: 'inset(0 0 100% 0)' },
-      { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1.2, ease: smoothEase },
-      '-=0.4'
+      { opacity: 0, y: 60, scale: 0.95, filter: 'blur(10px)' },
+      { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.4, ease: smoothEase },
+      '-=0.6'
     );
   }
 
   const heroSubtitle = document.querySelector('.hero-subtitle');
   if (heroSubtitle) {
-    heroTimeline.to(heroSubtitle, {
-      opacity: 1, duration: 1, ease: premiumEase
-    }, '-=0.6');
+    heroTimeline.fromTo(heroSubtitle,
+      { opacity: 0, y: 20, filter: 'blur(6px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: premiumEase },
+      '-=0.7'
+    );
   }
 
   const heroCtas = document.querySelector('.hero-ctas');
   if (heroCtas) {
-    heroTimeline.to(heroCtas, {
-      opacity: 1, duration: 0.8, ease: premiumEase
-    }, '-=0.5');
+    heroTimeline.fromTo(heroCtas,
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.8, ease: premiumEase },
+      '-=0.5'
+    );
+  }
+
+  // Hero blobs scale in
+  const heroBlobs = document.querySelectorAll('.hero-blob');
+  if (heroBlobs.length) {
+    gsap.fromTo(heroBlobs,
+      { scale: 0.5, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 2, ease: 'power2.out', stagger: 0.2, delay: 0.3 }
+    );
   }
 
   // =======================================
@@ -115,24 +127,29 @@ function initGSAP() {
   const pageHeroSub = document.querySelector('.page-hero-sub');
 
   if (pageHeroLabel || pageHeroTitle) {
-    const pageTimeline = gsap.timeline({ delay: 0.3 });
+    const pageTimeline = gsap.timeline({ delay: 0.6 });
 
     if (pageHeroLabel) {
-      pageTimeline.to(pageHeroLabel, {
-        opacity: 1, duration: 0.6, ease: premiumEase
-      });
+      pageTimeline.fromTo(pageHeroLabel,
+        { opacity: 0, y: 10, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: premiumEase }
+      );
     }
 
     if (pageHeroTitle) {
-      pageTimeline.to(pageHeroTitle, {
-        opacity: 1, y: 0, duration: 1, ease: smoothEase
-      }, '-=0.3');
+      pageTimeline.fromTo(pageHeroTitle,
+        { opacity: 0, y: 40, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: smoothEase },
+        '-=0.4'
+      );
     }
 
     if (pageHeroSub) {
-      pageTimeline.to(pageHeroSub, {
-        opacity: 1, y: 0, duration: 0.8, ease: premiumEase
-      }, '-=0.5');
+      pageTimeline.fromTo(pageHeroSub,
+        { opacity: 0, y: 20, filter: 'blur(4px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: premiumEase },
+        '-=0.5'
+      );
     }
   }
 
@@ -302,22 +319,44 @@ function initGSAP() {
   // =======================================
   const driftHeroName = document.querySelector('.drift-hero-name');
   if (driftHeroName) {
-    const driftHeroTl = gsap.timeline({ delay: 0.3 });
+    const driftHeroTl = gsap.timeline({ delay: 0.8 });
     const driftLabel = document.querySelector('.drift-hero .page-hero-label');
     const driftTagline = document.querySelector('.drift-hero-tagline');
     const driftDesc = document.querySelector('.drift-hero-desc');
 
     if (driftLabel) {
-      driftHeroTl.to(driftLabel, { opacity: 1, duration: 0.6, ease: premiumEase });
+      driftHeroTl.fromTo(driftLabel,
+        { opacity: 0, y: 10, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, ease: premiumEase }
+      );
     }
-    driftHeroTl.to(driftHeroName, {
-      opacity: 1, y: 0, duration: 1.2, ease: smoothEase
-    }, '-=0.3');
+    driftHeroTl.fromTo(driftHeroName,
+      { opacity: 0, y: 50, scale: 0.9, filter: 'blur(12px)' },
+      { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.4, ease: smoothEase },
+      '-=0.4'
+    );
     if (driftTagline) {
-      driftHeroTl.to(driftTagline, { opacity: 1, y: 0, duration: 0.8, ease: smoothEase }, '-=0.6');
+      driftHeroTl.fromTo(driftTagline,
+        { opacity: 0, y: 20, filter: 'blur(6px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: smoothEase },
+        '-=0.7'
+      );
     }
     if (driftDesc) {
-      driftHeroTl.to(driftDesc, { opacity: 1, duration: 0.8, ease: premiumEase }, '-=0.4');
+      driftHeroTl.fromTo(driftDesc,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.8, ease: premiumEase },
+        '-=0.4'
+      );
+    }
+
+    // Drift hero blobs scale in
+    const driftBlobs = document.querySelectorAll('.drift-hero-blob');
+    if (driftBlobs.length) {
+      gsap.fromTo(driftBlobs,
+        { scale: 0.4, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 2.5, ease: 'power2.out', stagger: 0.3, delay: 0.2 }
+      );
     }
   }
 
