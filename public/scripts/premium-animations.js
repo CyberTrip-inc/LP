@@ -42,6 +42,7 @@
     initSectionTransitions();
     initTextHighlight();
     initTiltCards();
+    initButtonRipple();
     // Gradient beam is CSS-only — no JS init needed
   });
 
@@ -663,6 +664,24 @@
           ease: 'elastic.out(1, 0.5)',
           clearProps: 'transform'
         });
+      });
+    });
+  }
+
+  /* ============================================
+     12. BUTTON RIPPLE POSITION TRACKING
+     ============================================ */
+  function initButtonRipple() {
+    var buttons = document.querySelectorAll('.btn-pill');
+    if (!buttons.length) return;
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var rect = btn.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(0);
+        var y = ((e.clientY - rect.top) / rect.height * 100).toFixed(0);
+        btn.style.setProperty('--ripple-x', x + '%');
+        btn.style.setProperty('--ripple-y', y + '%');
       });
     });
   }
