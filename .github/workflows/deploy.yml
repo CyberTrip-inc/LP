@@ -29,11 +29,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Cloudflare
+      - name: Deploy to Cloudflare (main only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "3"
-          command: deploy
+          command: pages deploy dist --project-name=cybertrip-website --branch=main
