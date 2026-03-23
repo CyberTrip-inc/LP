@@ -1,33 +1,33 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import Header from '../../../components/Header.astro';
-import AnnounceBanner from '../../../components/AnnounceBanner.astro';
-import Footer from '../../../components/Footer.astro';
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import AnnounceBanner from '../../components/AnnounceBanner.astro';
+import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
 const lang = 'ja';
 
 const allNews = await getCollection('news');
-const sorted = allNews.sort((a, b) => b.data.date.localeCompare(a.data.date));
-
-const newsItems = sorted.filter(n => n.data.category !== 'notice');
+const noticeItems = allNews
+  .filter(n => n.data.category === 'notice')
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
 ---
 
 <Base
-  title="お知らせ — CyberTrip"
-  description="株式会社CyberTripからのお知らせ一覧。"
+  title="公告 — CyberTrip"
+  description="株式会社CyberTripの公告ページ。決算公告等の法定公告を掲載しています。"
   lang={lang}
-  page="news"
+  page="notice"
 >
   <AnnounceBanner lang={lang} />
-  <Header lang={lang} page="news" />
+  <Header lang={lang} page="notice" />
 
   <section class="page-hero page-hero--news">
     <div class="page-hero-inner">
-      <p class="page-hero-label">News</p>
-      <h1 class="page-hero-title">お知らせ</h1>
+      <p class="page-hero-label">Public Notice</p>
+      <h1 class="page-hero-title">公告</h1>
       <p class="page-hero-sub">
-        株式会社CyberTripからのお知らせを掲載しています。
+        株式会社CyberTripの法定公告を掲載しています。
       </p>
     </div>
   </section>
@@ -35,21 +35,23 @@ const newsItems = sorted.filter(n => n.data.category !== 'notice');
   <section class="section section--dark">
     <div class="section-inner">
       <div class="section-label-line">
-        <span class="section-label">お知らせ</span>
+        <span class="section-label">公告一覧</span>
       </div>
-      {newsItems.length > 0 ? (
+      {noticeItems.length > 0 ? (
         <div class="news-list">
-          {newsItems.map((item) => {
+          {noticeItems.map((item) => {
             const title = item.data.title;
             const badge = item.data.badge;
             const linkHref = item.data.link ? `/ja${item.data.link}` : undefined;
             const linkText = item.data.link_text;
+            const pdfHref = `/notices/${item.id}.pdf`;
             return (
               <div class="news-item">
                 <div class="news-item-date">{item.data.date}</div>
                 <div class="news-item-content">
-                  {badge && <span class="news-item-badge">{badge}</span>}
+                  {badge && <span class="news-item-badge news-item-badge--notice">{badge}</span>}
                   <span class="news-item-title">{title}</span>
+                  <a href={pdfHref} class="news-item-link news-item-pdf" target="_blank" rel="noopener">PDF &darr;</a>
                   {linkHref && linkText && (
                     <a href={linkHref} class="news-item-link">{linkText} &rarr;</a>
                   )}
@@ -59,7 +61,7 @@ const newsItems = sorted.filter(n => n.data.category !== 'notice');
           })}
         </div>
       ) : (
-        <p class="news-empty">現在、お知らせはありません。</p>
+        <p class="news-empty">現在、掲載中の公告はありません。</p>
       )}
     </div>
   </section>
