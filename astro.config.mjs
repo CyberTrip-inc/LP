@@ -2,12 +2,12 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://cybertrip.co.jp',
+  site: 'https://cybertrip.jp',
   i18n: {
     defaultLocale: 'ja',
     locales: ['ja', 'en'],
     routing: {
-      prefixDefaultLocale: true,
+      prefixDefaultLocale: false,
     },
   },
 });

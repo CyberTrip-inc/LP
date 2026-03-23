@@ -5,7 +5,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const isEn = lang === 'en';
-const base = isEn ? '/en' : '/ja';
+const base = isEn ? '/en' : '';
 ---
 
 <footer class="footer">
@@ -37,7 +37,7 @@ const base = isEn ? '/en' : '/ja';
     <span class="footer-copy">&copy; 2026 CyberTrip, Inc. All rights reserved.</span>
     <div class="footer-bottom-right">
       <div class="footer-lang">
-        <a href="/ja/" class:list={[{ active: !isEn }]}>JP</a>
+        <a href="/" class:list={[{ active: !isEn }]}>JP</a>
         <a href="/en/" class:list={[{ active: isEn }]}>EN</a>
       </div>
     </div>
