@@ -7,7 +7,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const isEn = lang === 'en';
-const base = isEn ? '/en' : '/ja';
+const base = isEn ? '/en' : '';
 
 // Get the latest pinned news item, or the most recent one
 const allNews = await getCollection('news');

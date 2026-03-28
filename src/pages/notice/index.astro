@@ -42,7 +42,7 @@ const noticeItems = allNews
           {noticeItems.map((item) => {
             const title = item.data.title;
             const badge = item.data.badge;
-            const linkHref = item.data.link ? `/ja${item.data.link}` : undefined;
+            const linkHref = item.data.link ? `${item.data.link}` : undefined;
             const linkText = item.data.link_text;
             const pdfHref = `/notices/${item.id}.pdf`;
             return (

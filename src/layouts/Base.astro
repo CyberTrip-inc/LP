@@ -8,7 +8,7 @@ interface Props {
 
 const { title, description, lang, page = 'home' } = Astro.props;
 const isEn = lang === 'en';
-const basePath = isEn ? '/en' : '/ja';
+const basePath = isEn ? '/en' : '';
 const siteUrl = 'https://cybertrip.co.jp';
 const ogImage = `${siteUrl}/og-image.png`;
 const currentUrl = `${siteUrl}${Astro.url.pathname}`;
