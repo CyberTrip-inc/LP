@@ -1000,7 +1000,7 @@ body.has-banner .nav-main.open {
   box-shadow: 0 20px 60px rgba(43, 181, 160, 0.08);
 }
 
-.home-card--calcal:hover {
+.home-card--forge:hover {
   border-color: rgba(91, 163, 230, 0.3);
   box-shadow: 0 20px 60px rgba(91, 163, 230, 0.1);
 }
@@ -1036,7 +1036,7 @@ body.has-banner .nav-main.open {
   color: var(--teal);
 }
 
-.home-card--calcal .home-card-label {
+.home-card--forge .home-card-label {
   color: var(--wave);
 }
 
