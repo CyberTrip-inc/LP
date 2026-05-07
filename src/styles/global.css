@@ -2120,6 +2120,10 @@ body.has-banner .nav-main.open {
   margin-top: 3rem;
   opacity: 0;
   transform: translateY(15px);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* ============================================
