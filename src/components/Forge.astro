@@ -1,0 +1,113 @@
+---
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+
+const features = isEn
+  ? [
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: 'bento-card--wide bento-card--accent',
+        label: 'AI Meal Analysis',
+        title: 'One photo. Full nutrition.<br />No more typing meals in.',
+        body: 'Snap your plate — Forge estimates ingredients, portion size, and PFC balance instantly. Hidden oils, sugar, and salt are inferred from cooking style. Records that take 3 seconds, not 3 minutes.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--teal',
+        label: 'Workout Log',
+        title: 'Track lifts.<br />Connect them to results.',
+        body: 'Sets, reps, weight — logged fast. Forge connects your training load to body changes, so every session has a measurable purpose.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="m4 8 2-2"/><path d="m6 4 2 2"/><path d="m18 20 2-2"/><path d="m20 16 2 2"/><path d="m14 6 4 4"/><path d="m6 14 4 4"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--blue',
+        cardClass: 'bento-card--blue',
+        label: 'Body Tracking',
+        title: 'See what 30 days<br />of effort actually looks like.',
+        body: 'Weight, body fat, and progress photos — graphed over time. AI compares photos side-by-side so you see the change you can\'t feel day-to-day.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: '',
+        label: 'AI Pre-Check',
+        title: 'Ask before you eat.<br />Hit your goal anyway.',
+        body: '"Can I have ramen tonight?" Forge predicts the impact, suggests swaps, and tells you what to eat tomorrow to stay on track. Decisions, not regrets.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--wide',
+        label: 'Integrated Analysis',
+        title: 'Food × training × body —<br />one shortest path to your goal.',
+        body: 'Every other app silos meals, workouts, and weight. Forge fuses them into a single optimization. Daily and weekly reports show what worked, what didn\'t, and the next step that brings you closest to your ideal body.',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 3 3 21 21 21"/><path d="M7 14l4-4 4 4 5-5"/></svg>`,
+      },
+    ]
+  : [
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: 'bento-card--wide bento-card--accent',
+        label: 'AI食事解析',
+        title: '写真1枚で、栄養が決まる。<br />入力に時間をかけない。',
+        body: '料理を撮るだけ。AIが食材・分量・PFCを自動推定。調理油・砂糖・塩分など「隠れカロリー」も推定する。記録は3分ではなく、3秒で終わる。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--teal',
+        label: '筋トレ記録',
+        title: 'トレーニングを、<br />結果に直結させる。',
+        body: 'セット数・レップ数・重量を素早く記録。Forgeはトレーニング負荷と体の変化を結びつけ、すべてのセッションに数値で意味を与える。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 18 18"/><path d="m4 8 2-2"/><path d="m6 4 2 2"/><path d="m18 20 2-2"/><path d="m20 16 2 2"/><path d="m14 6 4 4"/><path d="m6 14 4 4"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--blue',
+        cardClass: 'bento-card--blue',
+        label: 'ボディトラッキング',
+        title: '30日の努力が、<br />ちゃんと「見える」。',
+        body: '体重・体脂肪・ボディ写真をAIが時系列で記録。日々では感じにくい変化を、グラフと写真の比較で可視化する。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--accent',
+        cardClass: '',
+        label: 'AI事前チェック',
+        title: '食べる前に聞ける。<br />それでも、目標に届く。',
+        body: '「今夜ラーメン食べてもいい？」——AIが影響を予測し、代替案や翌日の調整方法を提案。我慢ではなく、判断で目標に近づく。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+      },
+      {
+        iconClass: 'bento-icon--teal',
+        cardClass: 'bento-card--wide',
+        label: '統合分析',
+        title: '食事 × 筋トレ × 体の変化を、<br />ひとつの最短ルートに。',
+        body: '他のアプリは、食事・運動・体重をバラバラに扱う。Forgeはそれらを統合して最適化する。日次/週次レポートで「何が効いたか」「次に何をすべきか」が一目でわかる。理想のカラダまでの最短ルートを、AIが描き続ける。',
+        iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 3 3 21 21 21"/><path d="M7 14l4-4 4 4 5-5"/></svg>`,
+      },
+    ];
+---
+
+<section class="section section--dark" id="forge">
+  <div class="section-inner">
+    <div class="section-label-line">
+      <span class="section-label">Features</span>
+    </div>
+
+    <div class="bento-grid">
+      {features.map((card) => (
+        <div class={`bento-card ${card.cardClass}`}>
+          <div class={`bento-icon ${card.iconClass}`} set:html={card.iconSvg} />
+          <div class="bento-card-label">{card.label}</div>
+          <div class="bento-card-title" set:html={card.title} />
+          <div class="bento-card-body">{card.body}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

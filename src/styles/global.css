@@ -965,7 +965,7 @@ body.has-banner .nav-main.open {
 
 .home-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   overflow: visible;
 }
@@ -1000,6 +1000,11 @@ body.has-banner .nav-main.open {
   box-shadow: 0 20px 60px rgba(43, 181, 160, 0.08);
 }
 
+.home-card--forge:hover {
+  border-color: rgba(91, 163, 230, 0.3);
+  box-shadow: 0 20px 60px rgba(91, 163, 230, 0.1);
+}
+
 .home-card--company:hover {
   border-color: rgba(74, 125, 217, 0.25);
   box-shadow: 0 20px 60px rgba(74, 125, 217, 0.08);
@@ -1029,6 +1034,10 @@ body.has-banner .nav-main.open {
 
 .home-card--drift .home-card-label {
   color: var(--teal);
+}
+
+.home-card--forge .home-card-label {
+  color: var(--wave);
 }
 
 .home-card--company .home-card-label {
