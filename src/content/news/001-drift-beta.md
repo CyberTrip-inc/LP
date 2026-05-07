@@ -1,6 +1,6 @@
 ---
-title: "現在、5月リリース予定の旅マッチングアプリDriftを開発中！"
-title_en: "Now developing Drift — a travel matching app launching May 2026!"
+title: "現在、8月リリース予定の旅マッチングアプリDriftを開発中！"
+title_en: "Now developing Drift — a travel matching app launching August 2026!"
 date: "2026-03-12"
 badge: "開発中"
 badge_en: "In Dev"
