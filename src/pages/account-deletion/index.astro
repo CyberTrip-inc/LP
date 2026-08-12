@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import AnnounceBanner from '../../components/AnnounceBanner.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'ja';
+---
+
+<Base
+  title="アカウント削除について — CyberTrip"
+  description="旅行者マッチングアプリ「Drift」のアカウント削除方法についてのご案内。"
+  lang={lang}
+  page="account-deletion"
+>
+  <AnnounceBanner lang={lang} />
+  <Header lang={lang} page="account-deletion" />
+
+  <section class="page-hero page-hero--news">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Account Deletion</p>
+      <h1 class="page-hero-title">アカウント削除について</h1>
+      <p class="page-hero-sub">最終更新日: 2026年8月12日</p>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="section-inner legal-content">
+
+      <p class="legal-intro">
+        株式会社CyberTrip（以下「当社」）が提供する旅行者マッチングアプリ「Drift」では、アプリ内からいつでもアカウントの削除をリクエストできます。本ページでは削除の手順と、削除・保持されるデータについてご案内します。
+      </p>
+
+      <h2>1. アカウント削除の手順</h2>
+      <p>Driftアプリにログインした状態で、以下の手順でアカウント削除をリクエストできます。</p>
+      <ol>
+        <li>アプリ下部のタブから「設定」を開く</li>
+        <li>「アカウント設定」を選択する</li>
+        <li>「アカウントを削除」を選択する</li>
+        <li>確認事項の入力（パスワードでログインしている場合はパスワードの入力）を行い、最終確認画面で削除を確定する</li>
+      </ol>
+      <p>
+        アカウントを完全に削除する前に、一時的にプロフィールを非表示にする「アカウントの無効化」を選ぶこともできます。無効化はいつでもログインして元に戻せます。
+      </p>
+
+      <h2>2. 削除されるデータ</h2>
+      <p>削除をリクエストすると、以下の情報は即時に削除・匿名化されます。</p>
+      <ul>
+        <li>氏名、生年月日、自己紹介文</li>
+        <li>プロフィール写真</li>
+        <li>位置情報および現在地情報</li>
+        <li>電話番号</li>
+        <li>SNS連携情報（Instagram等の連携）</li>
+        <li>本人確認・年齢確認に関する記録</li>
+        <li>ログインに使用していたメールアドレス（同じメールアドレスで再登録が可能になります）</li>
+      </ul>
+
+      <h2>3. 保持されるデータ</h2>
+      <p>
+        不正利用の防止、他のユーザーからの通報・ブロック履歴の整合性維持、および法令上の要請に対応するため、上記の個人情報を取り除いた状態のレコードや、通報・ブロックに関する履歴は削除後も保持される場合があります。これらのレコードから、削除されたお客様個人を特定することはできません。
+      </p>
+      <p>
+        保持期間は、当社が不正利用防止・法令遵守の目的で必要と判断する期間に限られます。
+      </p>
+
+      <h2>4. お問い合わせ</h2>
+      <p>
+        アカウント削除に関するご質問は、下記までご連絡ください。
+      </p>
+      <p>
+        株式会社CyberTrip<br />
+        メール: <a href="mailto:support@cybertrip.jp">support@cybertrip.jp</a>
+      </p>
+
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .legal-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .legal-intro {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .legal-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    color: #fff;
+  }
+  .legal-content p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.75rem;
+  }
+  .legal-content ul,
+  .legal-content ol {
+    margin: 0.5rem 0 1.5rem 1.5rem;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .legal-content a {
+    color: var(--accent, #00d4aa);
+    text-decoration: underline;
+  }
+</style>
