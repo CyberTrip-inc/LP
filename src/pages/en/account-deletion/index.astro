@@ -1,0 +1,115 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import AnnounceBanner from '../../../components/AnnounceBanner.astro';
+import Footer from '../../../components/Footer.astro';
+
+const lang = 'en';
+---
+
+<Base
+  title="Account Deletion — CyberTrip"
+  description="How to delete your account on the Drift travel matching app."
+  lang={lang}
+  page="account-deletion"
+>
+  <AnnounceBanner lang={lang} />
+  <Header lang={lang} page="account-deletion" />
+
+  <section class="page-hero page-hero--news">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Account Deletion</p>
+      <h1 class="page-hero-title">Account Deletion</h1>
+      <p class="page-hero-sub">Last updated: August 12, 2026</p>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="section-inner legal-content">
+
+      <p class="legal-intro">
+        CyberTrip, Inc. ("we", "us") provides the travel matching app "Drift". You can request deletion of your account at any time from within the app. This page explains how to request deletion, and what data is deleted or retained.
+      </p>
+
+      <h2>1. How to request account deletion</h2>
+      <p>While logged in to the Drift app, follow these steps:</p>
+      <ol>
+        <li>Open the "Settings" tab at the bottom of the app</li>
+        <li>Select "Account Settings"</li>
+        <li>Select "Delete Account"</li>
+        <li>Confirm the required information (and your password, if you sign in with a password) and confirm deletion on the final confirmation screen</li>
+      </ol>
+      <p>
+        Before deleting your account permanently, you can also choose "Deactivate Account" to temporarily hide your profile. Deactivation can be reversed at any time by logging back in.
+      </p>
+
+      <h2>2. Data that is deleted</h2>
+      <p>When you request deletion, the following information is deleted or anonymized immediately:</p>
+      <ul>
+        <li>Name, birthdate, and bio</li>
+        <li>Profile photos</li>
+        <li>Location and current-location data</li>
+        <li>Phone number</li>
+        <li>Linked social accounts (e.g. Instagram)</li>
+        <li>Identity and age verification records</li>
+        <li>The email address used to sign in (this email becomes available for re-registration)</li>
+      </ul>
+
+      <h2>3. Data that is retained</h2>
+      <p>
+        To prevent abuse, to preserve the integrity of block/report history from other users, and to comply with legal obligations, an anonymized record and any related block/report history may be retained after deletion. These records cannot be used to identify the deleted account holder.
+      </p>
+      <p>
+        Any such data is retained only for as long as we determine is necessary for abuse-prevention and legal-compliance purposes.
+      </p>
+
+      <h2>4. Contact us</h2>
+      <p>
+        If you have questions about account deletion, please contact us at:
+      </p>
+      <p>
+        CyberTrip, Inc.<br />
+        Email: <a href="mailto:support@cybertrip.jp">support@cybertrip.jp</a>
+      </p>
+
+    </div>
+  </section>
+
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .legal-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .legal-intro {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .legal-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    color: #fff;
+  }
+  .legal-content p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 0.75rem;
+  }
+  .legal-content ul,
+  .legal-content ol {
+    margin: 0.5rem 0 1.5rem 1.5rem;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .legal-content a {
+    color: var(--accent, #00d4aa);
+    text-decoration: underline;
+  }
+</style>
